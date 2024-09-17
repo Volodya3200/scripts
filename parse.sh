@@ -1,7 +1,7 @@
 #!/bin/bash
 # Путь к файлу pars-file
-source_file=~/workspace/task_7/pars-file
-destination_dir=~/workspace/task_7/scripts
+source_file=~/workspace/task_8/pars-file
+destination_dir=~/workspace/task_8/scripts
 file_name="pars-file"
 
 
@@ -16,7 +16,7 @@ app=$(grep "app" $file_path | cut -d '=' -f 2)
 tag=$(grep "tag" $file_path | cut -d '=' -f 2)
 
 # Формирование Docker image в формате repo/app:tag
-image="${repo}\b/${app}\b:${tag}"
-
+image="${repo}/${app}:${tag}"
+str_no_spaces=$(echo "$image" | sed 's/ //g')
 # Вывод результата для использования в Jenkins pipeline
-echo "$image"
+echo "$str_no_spaces"
