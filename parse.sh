@@ -1,7 +1,14 @@
 #!/bin/bash
 # Путь к файлу pars-file
-cp ~/workspace/task_5/pars-file ~/workspace/task_5/scripts
-file_path="pars_file"
+source_file=~/workspace/task_6/pars-file
+destination_dir=~/workspace/task_6/scripts
+file_name="pars-file"
+
+
+cp "$source_file" "$destination_dir"
+
+# Путь к файлу после копирования
+file_path="${destination_dir}/${file_name}"
 
 # Чтение переменных из pars-file
 repo=$(grep "repo" $file_path | cut -d '=' -f 2)
