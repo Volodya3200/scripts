@@ -1,6 +1,6 @@
 #!/bin/bash
 # Путь к файлу pars-file
-file_path="../application/pars-file"
+file_path="~/workspace/task_1/application/pars-file"
 
 # Чтение переменных из pars-file
 repo=$(grep "repo" $file_path | cut -d '=' -f 2)
