@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source_file=~/workspace/task_8/pars-file
-destination_dir=~/workspace/task_8/scripts
+source_file=~/workspace/task_m/pars-file
+destination_dir=~/workspace/task_m/scripts
 file_name="pars-file"
 
 cp "$source_file" "$destination_dir"
