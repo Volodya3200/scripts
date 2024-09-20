@@ -1,17 +1,18 @@
 #!/bin/bash
 
-source_file=~/workspace/task_m/pars-file
-destination_dir=~/workspace/task_m/scripts
-file_name="pars-file"
+file_path=$(find ~/workspace -name "pars-file" | head -n 1)
 
-cp "$source_file" "$destination_dir"
+if [ -z "$file_path" ]; then
+    echo "Файл pars-file не найден!"
+    exit 1
+fi
 
-file_path="${destination_dir}/${file_name}"
+while IFS='=' read -r key value; do
+    if [ -n "$key" ] && [ -n "$value" ]; then
+        key=$(echo "$key" | xargs)
+        value=$(echo "$value" | xargs)
+        echo "$key=$value"
+    fi
+done < "$file_path"
 
-repo=$(grep "repo" $file_path | cut -d '=' -f 2)
-app=$(grep "app" $file_path | cut -d '=' -f 2)
-tag=$(grep "tag" $file_path | cut -d '=' -f 2)
 
-image=$(echo "${repo}/${app}:${tag}" | sed 's/ //g')
-
-echo "$image"
